@@ -1,0 +1,35 @@
+@use 'sass:math';
+@use '~@klippa/responsive-scss';
+
+@mixin make-columns($breakpoint) {
+	:host(.#{$breakpoint}-0) {
+		display: none;
+	}
+
+	@for $columns from 1 through 12 {
+		:host(.#{$breakpoint}-#{$columns}) {
+			display: flex;
+			flex: 0 0 percentage($columns / 12);
+			max-width: percentage($columns / 12);
+		}
+	}
+
+	@for $columns from 1 through 11 {
+		:host(.#{$breakpoint}-offset-#{$columns}) {
+			display: flex;
+			margin-left: percentage($columns / 12);
+		}
+	}
+}
+
+:host {
+	display: flex;
+	flex-direction: column;
+	flex: 1 1 auto;
+	width: auto;
+	max-width: 100%;
+}
+
+@include responsive-scss.allBreakpoints using ($breakpoint, $_) {
+	@include make-columns($breakpoint);
+}

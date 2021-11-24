@@ -1,0 +1,27 @@
+@use "~@klippa/responsive-scss";
+
+// TODO: some how make this configurable. From a service?
+$container-max-widths: (
+	sm: 540px,
+	md: 720px,
+	lg: 960px,
+	xl: 1140px,
+	xxl: 1440px,
+);
+
+:host {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+
+	@each $breakpoint, $max-width in $container-max-widths {
+		@include responsive-scss.responsive($breakpoint) {
+			max-width: $max-width;
+		}
+	}
+}
+
+:host(.fluid) {
+	width: 100%;
+	max-width: none;
+}

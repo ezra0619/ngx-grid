@@ -1,0 +1,54 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "@klippa/ngx-grid": {
+      "projectType": "library",
+			"schematics": {
+				"@schematics/angular:component": {
+					"style": "scss"
+				}
+			},
+      "root": "projects/klippa/ngx-grid",
+      "sourceRoot": "projects/klippa/ngx-grid/src",
+      "prefix": "klp",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/klippa/ngx-grid/tsconfig.lib.json",
+            "project": "projects/klippa/ngx-grid/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/klippa/ngx-grid/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/klippa/ngx-grid/src/test.ts",
+            "tsConfig": "projects/klippa/ngx-grid/tsconfig.spec.json",
+            "karmaConfig": "projects/klippa/ngx-grid/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/klippa/ngx-grid/tsconfig.lib.json",
+              "projects/klippa/ngx-grid/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+
+  },
+  "defaultProject": "@klippa/ngx-grid"
+}
