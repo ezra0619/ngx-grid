@@ -1,6 +1,19 @@
-# NgxGrid
+# Klippa Grid Framework 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.6.
+This is the repository for building and developing [@klippa/ngx-grid](https://www.npmjs.com/package/@klippa/ngx-grid).
+
+## Structure
+
+The actual library is in `projects/klippa/ngx-grid`. You might notice that there is a `package.json` both in the root
+of the repo, and in the library. This is important. 
+
+The root `package.json` is used for building the angular library. Any dependencies that are only 
+required to _compile_ the library and are not needed at runtime should be specified here.
+
+The `/projects/klippa/ngx-grid/package.json` is used for publishing and using the library. Any dependencies that would
+be required at runtime should be specified here as `peerDependencies`. Angular will not allow normal `dependencies` here.
+
+How to use the library is documented in [projects/klippa/ngx-grid/README.md](projects/klippa/ngx-grid/README.md)
 
 ## Development server
 

@@ -1,4 +1,5 @@
 import {
+	AfterViewInit,
 	Component,
 	ElementRef,
 	HostBinding,
@@ -16,7 +17,7 @@ type Sizes = Partial<Record<Size, number>>;
 	templateUrl: './grid-column.component.html',
 	styleUrls: ['./grid-column.component.scss'],
 })
-export class GridColumnComponent implements OnInit {
+export class GridColumnComponent implements OnInit, AfterViewInit {
 	@Input() width: Sizes = {};
 	@Input() offset: Sizes = {};
 
@@ -30,11 +31,7 @@ export class GridColumnComponent implements OnInit {
 		);
 	}
 
-	constructor(@SkipSelf() private _parent: ElementRef) {
-		if (!_parent.nativeElement.matches('klp-grid-row')) {
-			throw new Error('klp-grid-column must be child of klp-grid-row');
-		}
-	}
+	constructor(private self: ElementRef) { }
 
 	ngOnInit(): void {
 		const classes: string[] = [];
@@ -44,5 +41,11 @@ export class GridColumnComponent implements OnInit {
 		classes.push(...this.class.split(' '));
 
 		this.class = classes.join(' ');
+	}
+
+	ngAfterViewInit(): void {
+		if (!this.self.nativeElement.parentElement.matches('klp-grid-row')) {
+			throw new Error('klp-grid-column must be child of klp-grid-row');
+		}
 	}
 }
