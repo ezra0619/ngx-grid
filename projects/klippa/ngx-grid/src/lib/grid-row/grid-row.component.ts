@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {AfterViewInit, Component, ElementRef} from '@angular/core';
 import { GridContainerComponent } from '../grid-container/grid-container.component';
 
 @Component({
@@ -6,6 +6,16 @@ import { GridContainerComponent } from '../grid-container/grid-container.compone
 	templateUrl: './grid-row.component.html',
 	styleUrls: ['./grid-row.component.scss'],
 })
-export class GridRowComponent {
-	constructor(private _container: GridContainerComponent) {}
+export class GridRowComponent implements AfterViewInit {
+	constructor(private _container: GridContainerComponent, private self: ElementRef) {}
+
+	allChildrenAreColumns(): boolean {
+		const children: Element[] = Array.from(this.self.nativeElement.children);
+		return children.reduce((acc, child) => acc && child.matches('klp-grid-column'), true);
+	}
+	ngAfterViewInit(): void {
+		if (!this.allChildrenAreColumns()) {
+			throw new Error ('klp-grid-row can only have klp-grid-columns as children.');
+		}
+	}
 }
