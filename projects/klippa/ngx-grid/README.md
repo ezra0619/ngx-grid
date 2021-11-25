@@ -1,24 +1,29 @@
-# NgxGrid
+# Klippa Grid Framework
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.6.
+## Usage
+To use the grid system, first import it into your angular module:
 
-## Code scaffolding
+```ts
+import {NgModule} from '@angular/core';
+import {NgxGridModule} from '@klippa/ngx-grid';
 
-Run `ng generate component component-name --project ngx-grid` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ngx-grid`.
-> Note: Don't forget to add `--project ngx-grid` or else it will be added to the default project in your `angular.json` file. 
+@NgModule({
+	imports: [ NgxGridModule ],
+	declarations: [ MyComponent ],
+	exports: [ MyComponent ],
+})
+export class MyModule {}
+```
 
-## Build
+Then use the components in the template:
 
-Run `ng build ngx-grid` to build the project. The build artifacts will be stored in the `dist/` directory.
+```html
+<klp-grid-container>
+	<klp-grid-row>
+		<klp-grid-column>
+			<!-- ... -->
+		</klp-grid-column>
+	</klp-grid-row>
+</klp-grid-container>
+```
 
-## Publishing
-
-After building your library with `ng build ngx-grid`, go to the dist folder `cd dist/ngx-grid` and run `npm publish`.
-
-## Running unit tests
-
-Run `ng test ngx-grid` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
