@@ -7,6 +7,7 @@ import {
 	OnInit,
 	SkipSelf,
 } from '@angular/core';
+import {GridContainerComponent} from '../grid-container/grid-container.component';
 
 type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 
@@ -21,6 +22,8 @@ export class GridColumnComponent implements OnInit, AfterViewInit {
 	@Input() width: Sizes = {};
 	@Input() offset: Sizes = {};
 
+	@HostBinding('style.padding-left') paddingLeft;
+	@HostBinding('style.padding-right') paddingRight;
 	@HostBinding('class') @Input() class = '';
 
 	private extractSizes(input: Sizes, infix?: string): string[] {
@@ -31,7 +34,7 @@ export class GridColumnComponent implements OnInit, AfterViewInit {
 		);
 	}
 
-	constructor(private self: ElementRef) { }
+	constructor(private self: ElementRef, private _container: GridContainerComponent) { }
 
 	ngOnInit(): void {
 		const classes: string[] = [];
@@ -41,6 +44,9 @@ export class GridColumnComponent implements OnInit, AfterViewInit {
 		classes.push(...this.class.split(' '));
 
 		this.class = classes.join(' ');
+
+		this.paddingLeft = `${this._container.gutter / 2}px`;
+		this.paddingRight = `${this._container.gutter / 2}px`;
 	}
 
 	ngAfterViewInit(): void {

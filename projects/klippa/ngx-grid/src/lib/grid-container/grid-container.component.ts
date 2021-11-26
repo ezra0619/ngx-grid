@@ -12,6 +12,7 @@ import {
 	styleUrls: ['./grid-container.component.scss'],
 })
 export class GridContainerComponent {
+	@Input() gutter = 0;
 	@HostBinding('class.fluid') @Input() fluid: boolean;
 
 	constructor(@SkipSelf() @Optional() parentContainer: GridContainerComponent) {
