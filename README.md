@@ -1,6 +1,7 @@
 # Klippa Grid Framework 
 
 This is the repository for building and developing [@klippa/ngx-grid](https://www.npmjs.com/package/@klippa/ngx-grid).
+How to use the library is documented in [projects/klippa/ngx-grid/README.md](projects/klippa/ngx-grid/README.md)
 
 ## Structure
 
@@ -12,8 +13,6 @@ required to _compile_ the library and are not needed at runtime should be specif
 
 The `/projects/klippa/ngx-grid/package.json` is used for publishing and using the library. Any dependencies that would
 be required at runtime should be specified here as `peerDependencies`. Angular will not allow normal `dependencies` here.
-
-How to use the library is documented in [projects/klippa/ngx-grid/README.md](projects/klippa/ngx-grid/README.md)
 
 ## Development server
 
