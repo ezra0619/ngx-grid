@@ -44,10 +44,10 @@ Then use the components in the template:
 Grid containers cannot be nested at any level. Ideally, stick a grid container at the
 highest level in your application as possible and forget about it.
 
-It can optionally take one input; `fluid`.
+It can optionally take two inputs: `fluid` and `gutter`.
 
 ```html
-<klp-grid-container [fluid]="true">
+<klp-grid-container [fluid]="true" [gutter]="30">
 ```
 
 `fluid` is false by default, in which case the grid container has a maximum width
@@ -56,10 +56,12 @@ set for each breakpoint as defined in the breakpoint section.
 If `fluid` is true, no max width will be set and the grid container will completely
 fill its parent.
 
+`gutter` describes the gaps between columns in pixels
+
 ## `<klp-grid-row>`
 
-Grid rows must have a parent container at some level. There direct children can only be
-grid columns. any other child will throw an error.
+Grid rows must have a parent container at some level. Their direct children can only be
+grid columns. Any other child will throw an error.
 
 ## `<klp-grid-column>`
 
