@@ -17,8 +17,7 @@
     ],
     "paths": {
       "@klippa/ngx-grid": [
-        "dist/klippa/ngx-grid/klippa-ngx-grid",
-        "dist/klippa/ngx-grid",
+        "projects/klippa/ngx-grid/src/public-api.ts",
       ]
     }
   }
