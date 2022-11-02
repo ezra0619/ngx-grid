@@ -1,0 +1,8 @@
+
+klp-grid-column {
+	@for $i from random(3) to 6 {
+		&:nth-child(#{$i}) {
+			background: hsl(random(360), 70%, 70%)
+		}
+	}
+}
